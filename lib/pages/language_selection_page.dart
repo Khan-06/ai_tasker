@@ -10,20 +10,14 @@ class LanguageSelectionPage extends StatefulWidget {
 }
 
 class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
-  late List<Language> languages;
-
-  @override
-  void initState() {
-    super.initState();
-    languages = [
-      Language(languageName: 'English', iconPath: 'assets/language_icons/english.png'),
-      Language(languageName: 'Spanish', iconPath: 'assets/language_icons/espanol.png'),
-      Language(languageName: 'Bahasa Indonesia', iconPath: 'assets/language_icons/bahasa indonesia.png'),
-      Language(languageName: 'Turkce', iconPath: 'assets/language_icons/turkce.png'),
-      Language(languageName: 'Pyccknn', iconPath: 'assets/language_icons/Pyccknn.png'),
-      Language(languageName: 'Deutsch', iconPath: 'assets/language_icons/deutsch.png'),
-    ];
-  }
+  static List<Language> languages = [
+    Language(languageName: 'English', iconPath: 'assets/language_icons/english.png'),
+    Language(languageName: 'Spanish', iconPath: 'assets/language_icons/espanol.png'),
+    Language(languageName: 'Bahasa Indonesia', iconPath: 'assets/language_icons/bahasa indonesia.png'),
+    Language(languageName: 'Turkce', iconPath: 'assets/language_icons/turkce.png'),
+    Language(languageName: 'Pyccknn', iconPath: 'assets/language_icons/Pyccknn.png'),
+    Language(languageName: 'Deutsch', iconPath: 'assets/language_icons/deutsch.png'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,32 +54,38 @@ class LanguageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundImage: AssetImage(language.iconPath),
-          backgroundColor: Colors.transparent,
-        ),
-        title: Text(language.languageName),
-        trailing: GestureDetector(
-          onTap: () => onSelect(language),
-          child: Card(
-            elevation: 3,
-            child: Container(
-              width: 20,
-              height: 20,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: language.isSelected ? Colors.blue : Colors.transparent,
-                border: Border.all(
-                  color: Colors.blue,
-                  width: 2,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        splashColor: Colors.transparent,
+        onTap: () => onSelect(language),
+        child: Card(
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: AssetImage(language.iconPath),
+              backgroundColor: Colors.transparent,
+            ),
+            title: Text(language.languageName),
+            trailing: GestureDetector(
+              onTap: () => onSelect(language),
+              child: Card(
+                elevation: 3,
+                child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: language.isSelected ? Colors.blue : Colors.transparent,
+                    border: Border.all(
+                      color: Colors.blue,
+                      width: 2,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        onTap: () => onSelect(language),
       ),
     );
   }
