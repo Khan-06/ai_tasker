@@ -8,9 +8,9 @@ class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Scaffold(
-      appBar: CustomAppBar(),
-      drawer: CustomDrawer(),
+  Widget build(BuildContext context) => Scaffold(
+      appBar: const CustomAppBar(),
+      drawer: const CustomDrawer(),
       body: HomePage()
     );
 }
