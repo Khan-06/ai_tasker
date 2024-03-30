@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-class language {
-  late final String languageName;
-  late final String iconPath;
-  late final bool isSelected;
+class Language {
+  final String languageName;
+  final String iconPath;
+  bool isSelected;
 
-  language(
-      {required this.languageName,
-      required this.iconPath,
-      this.isSelected = false});
+  Language({required this.languageName, required this.iconPath, this.isSelected = false});
 }

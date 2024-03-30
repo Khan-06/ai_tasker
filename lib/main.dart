@@ -20,7 +20,11 @@ class MyApp extends StatelessWidget {
           color: Color.fromRGBO(37, 38, 40, 1),
         ),
       ),
-      home: const LanguageSelectionPage(),
+      home: const HomePage(),
+
+      routes: {
+        LanguageSelectionPage.routeName: (context) => const LanguageSelectionPage(),
+      }
     );
   }
 }

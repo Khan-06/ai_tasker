@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../providers/language_provider.dart';
 
 class LanguageSelectionPage extends StatefulWidget {
+  static const String routeName = '/LanguageSelectionScreen';
   const LanguageSelectionPage({Key? key}) : super(key: key);
 
   @override
@@ -8,9 +10,12 @@ class LanguageSelectionPage extends StatefulWidget {
 }
 
 class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
+  late List<Language> languages;
+
   @override
-  Widget build(BuildContext context) {
-    List<Language> languages = [
+  void initState() {
+    super.initState();
+    languages = [
       Language(languageName: 'English', iconPath: 'assets/language_icons/english.png'),
       Language(languageName: 'Spanish', iconPath: 'assets/language_icons/espanol.png'),
       Language(languageName: 'Bahasa Indonesia', iconPath: 'assets/language_icons/bahasa indonesia.png'),
@@ -18,7 +23,10 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
       Language(languageName: 'Pyccknn', iconPath: 'assets/language_icons/Pyccknn.png'),
       Language(languageName: 'Deutsch', iconPath: 'assets/language_icons/deutsch.png'),
     ];
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Select Language'),
@@ -26,12 +34,13 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
       body: ListView.builder(
         itemCount: languages.length,
         itemBuilder: (context, index) {
-          final language = languages[index];
           return LanguageTile(
-            countryFlag: language.iconPath,
-            languageName: language.languageName,
-            isSelected: false,
-            onSelect: (isSelected) => print(isSelected),
+            language: languages[index],
+            onSelect: (selectedLanguage) {
+              setState(() {
+                selectedLanguage.isSelected = !selectedLanguage.isSelected;
+              });
+            },
           );
         },
       ),
@@ -39,47 +48,27 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
   }
 }
 
-class Language {
-  final String languageName;
-  final String iconPath;
-
-  Language({required this.languageName, required this.iconPath});
-}
-
-class LanguageTile extends StatefulWidget {
-  final String countryFlag;
-  final String languageName;
-  final bool isSelected;
-  final Function(bool) onSelect;
+class LanguageTile extends StatelessWidget {
+  final Language language;
+  final Function(Language) onSelect;
 
   const LanguageTile({
-    required this.countryFlag,
-    required this.languageName,
-    required this.isSelected,
+    required this.language,
     required this.onSelect,
     Key? key,
   }) : super(key: key);
 
   @override
-  _LanguageTileState createState() => _LanguageTileState();
-}
-
-class _LanguageTileState extends State<LanguageTile> {
-  @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         leading: CircleAvatar(
-          backgroundImage: AssetImage(widget.countryFlag),
+          backgroundImage: AssetImage(language.iconPath),
           backgroundColor: Colors.transparent,
         ),
-        title: Text(widget.languageName),
+        title: Text(language.languageName),
         trailing: GestureDetector(
-          onTap: () {
-            setState(() {
-              widget.onSelect(!widget.isSelected); // Toggle isSelected state
-            });
-          },
+          onTap: () => onSelect(language),
           child: Card(
             elevation: 3,
             child: Container(
@@ -87,7 +76,7 @@ class _LanguageTileState extends State<LanguageTile> {
               height: 20,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: widget.isSelected ? Colors.blue : Colors.transparent,
+                color: language.isSelected ? Colors.blue : Colors.transparent,
                 border: Border.all(
                   color: Colors.blue,
                   width: 2,
@@ -96,11 +85,7 @@ class _LanguageTileState extends State<LanguageTile> {
             ),
           ),
         ),
-        onTap: () {
-          setState(() {
-            widget.onSelect(!widget.isSelected); // Toggle isSelected state
-          });
-        },
+        onTap: () => onSelect(language),
       ),
     );
   }

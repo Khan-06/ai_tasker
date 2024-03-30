@@ -1,3 +1,4 @@
+import 'package:ai_tasker_simple/pages/language_selection_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -57,9 +58,9 @@ class CusListTile extends StatelessWidget {
   final String leadingIcon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Card(
         color: const Color.fromRGBO(50, 51, 53, 1),
         child: ListTile(
@@ -68,7 +69,8 @@ class CusListTile extends StatelessWidget {
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           leading: Image.asset(leadingIcon),
-          trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
+          trailing: OutlinedButton(onPressed: () { Navigator.of(context).pushNamed(LanguageSelectionPage.routeName);},
+          child: const Icon(Icons.arrow_forward_ios_outlined, size: 16)),
         ),
       ),
     );
