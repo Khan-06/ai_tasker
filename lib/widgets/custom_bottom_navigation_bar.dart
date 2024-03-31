@@ -20,6 +20,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           _currentIndex = index;
         });
       },
+      selectedItemColor: const Color.fromRGBO(0, 178, 169, 1),
       items: [
         BottomNavigationBarItem(
           icon: SvgPicture.asset(_currentIndex == 0 ? 'assets/icons/home_clicked.svg' : 'assets/icons/home_unclicked.svg'),
