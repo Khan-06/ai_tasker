@@ -12,7 +12,6 @@ class CustomDrawer extends StatelessWidget {
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
-
             children: [
               Container(
                 width: double.infinity,
@@ -25,38 +24,43 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10,),
-              const CusListTile(
-                  title: "Language",
-                  leadingIcon: 'assets/icons/language_icon.png',
-                  ),
+              CusListTile(
+                title: "Language",
+                leadingIcon: 'assets/icons/language_icon.png',
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(LanguageSelectionPage.routeName);
+                },
+              ),
               const SizedBox(height: 8,),
-              const CusListTile(
-                  title: "Share",
-                  leadingIcon: 'assets/icons/share_icon.png',
-                  ),
+              CusListTile(
+                title: "Share",
+                leadingIcon: 'assets/icons/share_icon.png',
+                onTap: () {}, // Add empty function here
+              ),
               const SizedBox(height: 8,),
-              const CusListTile(
-                  title: "Favorite",
-                  leadingIcon: 'assets/icons/Favorite_icon.png',
-                  ),
+              CusListTile(
+                title: "Favorite",
+                leadingIcon: 'assets/icons/Favorite_icon.png',
+                onTap: () {}, // Add empty function here
+              ),
               const SizedBox(height: 8,),
-              const CusListTile(
-                  title: "Privacy Policy",
-                  leadingIcon: 'assets/icons/privacy_icon.png',
-                  ),
+              CusListTile(
+                title: "Privacy Policy",
+                leadingIcon: 'assets/icons/privacy_icon.png',
+                onTap: () {}, // Add empty function here
+              ),
             ],
           ),
           Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child:
-                  Image.asset('assets/icons/premium_banner.png'),
+                child: Image.asset('assets/icons/premium_banner.png'),
                 //SvgPicture.asset('assets/icons/premium_banner.svg'),
               ),
             ],
           )
-
         ],
       ),
     );
@@ -64,14 +68,16 @@ class CustomDrawer extends StatelessWidget {
 }
 
 class CusListTile extends StatelessWidget {
+  final String title;
+  final String leadingIcon;
+  final VoidCallback onTap;
+
   const CusListTile({
     required this.title,
     required this.leadingIcon,
+    required this.onTap,
     Key? key,
   }) : super(key: key);
-
-  final String title;
-  final String leadingIcon;
 
   @override
   Widget build(BuildContext context){
@@ -85,13 +91,12 @@ class CusListTile extends StatelessWidget {
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           leading: Image.asset(leadingIcon),
-          trailing: OutlinedButton(onPressed: () { Navigator.of(context).pushNamed(LanguageSelectionPage.routeName);},
-          child: const Icon(Icons.arrow_forward_ios_outlined, size: 16)),
+          trailing: TextButton(
+            onPressed: onTap,
+            child: const Icon(Icons.arrow_forward_ios_outlined, size: 16),
+          ),
         ),
       ),
     );
   }
 }
-
-// mage.asset('assets/icons/language_icon.png'),
-// trailing: const Icon(Icons.arrow_forward_ios_rounded)

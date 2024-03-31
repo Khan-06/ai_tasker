@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   fontSize: 20),
             ),
             TextSpan(
-              text: ' Assistant',
+              text: ' Tasker',
               style: TextStyle(
                   color: Colors.white, // Set white color for 'Assistant'
                   fontWeight: FontWeight.bold, // Optional: Add bold style

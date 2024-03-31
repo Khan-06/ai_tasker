@@ -13,6 +13,6 @@ class MainPage extends StatelessWidget {
         appBar: const CustomAppBar(),
         drawer: const CustomDrawer(),
         bottomNavigationBar: const CustomBottomNavigationBar(),
-        body: HomePage(),
+        body: SingleChildScrollView(child: HomePage()),
       );
 }
