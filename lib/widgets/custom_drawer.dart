@@ -1,5 +1,6 @@
 import 'package:ai_tasker_simple/pages/language_selection_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -8,39 +9,55 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: double.infinity,
-            height: 200,
-            decoration: const BoxDecoration(
-              color: Colors.cyan,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(20),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+
+            children: [
+              Container(
+                width: double.infinity,
+                height: 200,
+                decoration: const BoxDecoration(
+                  color: Colors.cyan,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(20),
+                  ),
+                ),
               ),
-            ),
+              const SizedBox(height: 10,),
+              const CusListTile(
+                  title: "Language",
+                  leadingIcon: 'assets/icons/language_icon.png',
+                  ),
+              const SizedBox(height: 8,),
+              const CusListTile(
+                  title: "Share",
+                  leadingIcon: 'assets/icons/share_icon.png',
+                  ),
+              const SizedBox(height: 8,),
+              const CusListTile(
+                  title: "Favorite",
+                  leadingIcon: 'assets/icons/Favorite_icon.png',
+                  ),
+              const SizedBox(height: 8,),
+              const CusListTile(
+                  title: "Privacy Policy",
+                  leadingIcon: 'assets/icons/privacy_icon.png',
+                  ),
+            ],
           ),
-          const SizedBox(height: 10,),
-          const CusListTile(
-              title: "Language",
-              leadingIcon: 'assets/icons/language_icon.png',
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child:
+                  Image.asset('assets/icons/premium_banner.png'),
+                //SvgPicture.asset('assets/icons/premium_banner.svg'),
               ),
-          const SizedBox(height: 8,),
-          const CusListTile(
-              title: "Share",
-              leadingIcon: 'assets/icons/share_icon.png',
-              ),
-          const SizedBox(height: 8,),
-          const CusListTile(
-              title: "Favorite",
-              leadingIcon: 'assets/icons/Favorite_icon.png',
-              ),
-          const SizedBox(height: 8,),
-          const CusListTile(
-              title: "Privacy Policy",
-              leadingIcon: 'assets/icons/privacy_icon.png',
-              ),
+            ],
+          )
+
         ],
       ),
     );
