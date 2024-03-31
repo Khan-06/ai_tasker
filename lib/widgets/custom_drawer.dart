@@ -1,6 +1,5 @@
 import 'package:ai_tasker_simple/pages/language_selection_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);

@@ -61,46 +61,45 @@ class HomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: Container(
-          margin: const EdgeInsets.all(20),
-          width: MediaQuery.of(context).size.width * 0.4,
-          decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Header Icon
-              Image.asset(headerIcon, width: 40),
+    onTap: onTap,
+    child: Container(
+      margin: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header Icon
+          Image.asset(headerIcon, width: 40),
 
-              // Header Text
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: Text(
-                  headerText,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+          // Header Text
+          Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: Text(
+              headerText,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-
-              // Header Description
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Text(
-                  headerDescription,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      );
+
+          // Header Description
+          Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(
+              headerDescription,
+              style: const TextStyle(
+                fontSize: 15,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
