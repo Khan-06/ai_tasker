@@ -1,3 +1,4 @@
+import 'package:ai_tasker_simple/pages/chat_page.dart';
 import 'package:ai_tasker_simple/pages/language_selection_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,13 +17,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       darkTheme: ThemeData.dark().copyWith(
-        appBarTheme: const AppBarTheme(
+          primaryColor: const Color.fromRGBO(0, 190, 151, 1),
+          appBarTheme: const AppBarTheme(
           color: Color.fromRGBO(37, 38, 40, 1),
         ),
       ),
-      home: const MainPage(),
-
-      routes: {
+        home: const ChatPage(),
+        routes: {
         LanguageSelectionPage.routeName: (context) => const LanguageSelectionPage(),
       }
     );
