@@ -53,6 +53,7 @@ class HomeCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const HomeCard({
+    super.key,
     required this.headerIcon,
     required this.headerText,
     required this.headerDescription,
@@ -63,8 +64,8 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) => GestureDetector(
     onTap: onTap,
     child: Container(
-      margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
+          // margin: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.1),
         borderRadius: BorderRadius.circular(20),
       ),
