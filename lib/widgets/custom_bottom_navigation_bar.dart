@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -7,19 +8,19 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(items: [
       BottomNavigationBarItem(
-        icon: Image.asset('assets/icons/home.png'),
+        icon: SvgPicture.asset('assets/icons/home.svg'),
         label: 'Home',
       ),
       BottomNavigationBarItem(
-        icon: Image.asset('assets/icons/chat.png'),
+        icon: SvgPicture.asset('assets/icons/chat.svg'),
         label: 'Chat',
       ),
       BottomNavigationBarItem(
-        icon: Image.asset('assets/icons/recent.png'),
+        icon: SvgPicture.asset('assets/icons/recent.svg'),
         label: 'Recent',
       ),
       BottomNavigationBarItem(
-        icon: Image.asset('assets/icons/settings.png'),
+        icon: SvgPicture.asset('assets/icons/settings.svg'),
         label: 'Settings',
       ),
     ]);
