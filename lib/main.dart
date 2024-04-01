@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
         home: const ChatPage(),
         routes: {
         LanguageSelectionPage.routeName: (context) => const LanguageSelectionPage(),
-      }
+          ChatPage.routeName: (context) => const ChatPage(),
+        }
     );
   }
 }

@@ -7,6 +7,7 @@ import '../widgets/chat_box.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
 
 class ChatPage extends StatefulWidget {
+  static const routeName = '/chat_page';
   const ChatPage({super.key});
 
   @override
