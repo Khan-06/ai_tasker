@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({Key? key}) : super(key: key);
+  PageController? pageController;
+   CustomBottomNavigationBar({Key? key, required this.pageController}) : super(key: key);
 
   @override
-  _CustomBottomNavigationBarState createState() => _CustomBottomNavigationBarState();
+  CustomBottomNavigationBarState createState() => CustomBottomNavigationBarState();
 }
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _currentIndex = 0;
 
   @override
@@ -17,6 +18,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       currentIndex: _currentIndex,
       onTap: (index) {
         setState(() {
+          widget.pageController?.jumpToPage(index);
           _currentIndex = index;
         });
       },

@@ -22,10 +22,12 @@ class MyApp extends StatelessWidget {
           color: Color.fromRGBO(37, 38, 40, 1),
         ),
       ),
-        home: const ChatPage(),
+        home:  MainPage(),
         routes: {
+
         LanguageSelectionPage.routeName: (context) => const LanguageSelectionPage(),
-          ChatPage.routeName: (context) => const ChatPage(),
+          ChatPage.routeName: (context) =>  ChatPage(),
+          MainPage.routeName: (context) =>  MainPage(),
         }
     );
   }
