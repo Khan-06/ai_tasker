@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         routes: {
 
         LanguageSelectionPage.routeName: (context) => const LanguageSelectionPage(),
-          ChatPage.routeName: (context) =>  ChatPage(),
+          ChatPage.routeName: (context) => const ChatPage(),
           MainPage.routeName: (context) =>  MainPage(),
         }
     );

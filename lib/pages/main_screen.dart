@@ -16,6 +16,12 @@ class MainPage extends StatelessWidget {
         appBar: const CustomAppBar(),
         drawer: const CustomDrawer(),
         bottomNavigationBar:  CustomBottomNavigationBar(pageController: _pageController),
-        body: PageView(physics: const NeverScrollableScrollPhysics(), controller: _pageController, children:[ SingleChildScrollView(child: HomePage()),  ChatPage()]),
+        body: PageView(
+            physics: const NeverScrollableScrollPhysics(),
+            controller: _pageController,
+            children: [
+              SingleChildScrollView(child: HomePage()),
+              const ChatPage()
+            ]),
       );
 }

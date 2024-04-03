@@ -1,10 +1,6 @@
-import 'package:ai_tasker_simple/widgets/customAppBar.dart';
-import 'package:ai_tasker_simple/widgets/custom_drawer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/chat_box.dart';
-import '../widgets/custom_bottom_navigation_bar.dart';
 
 class ChatPage extends StatefulWidget {
   static const routeName = '/chat_page';
@@ -15,7 +11,6 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +42,25 @@ class _ChatPageState extends State<ChatPage> {
                         icon: Icon(Icons.arrow_drop_down,
                             color: Theme.of(context).primaryColor,
                             size: 40), // Set icon color to primary color
-                        onPressed: () {},
+                        onPressed: () {
+                          // Add BottomSheet to show more models
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) => Column(
+                              children: [
+                                const Text('Choose Model',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
+                                const SizedBox(height: 10),
+                                Image.asset('assets/gpt_model/GPT3-poster.png'),
+                                Image.asset('assets/gpt_model/GPT4-poster.png'),
+                                Image.asset(
+                                    'assets/gpt_model/GPT4T-poster.png'),
+                              ],
+                            ),
+                          );
+                        },
                       )
                     ],
                   ),
@@ -85,12 +98,17 @@ class _ChatPageState extends State<ChatPage> {
               Container(
                 decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(10).copyWith(
+                        bottomLeft: const Radius.circular(0),
+                        bottomRight: const Radius.circular(0))),
                 child: Column(
                   children: [
                     Row(
                       children: [
-                        const Text('You have 10 free messages left.'),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text('You have 10 free messages left.'),
+                        ),
                         TextButton(
                           onPressed: () {},
                           child: const Text(
@@ -109,6 +127,7 @@ class _ChatPageState extends State<ChatPage> {
                         ),
                         Expanded(
                           child: Container(
+                            margin: const EdgeInsets.only(bottom: 8),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: Colors.grey.withOpacity(0.1),
