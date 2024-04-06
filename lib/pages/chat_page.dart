@@ -11,6 +11,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  String selectedModel = 'GPT-3 Turbo';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,17 +26,16 @@ class _ChatPageState extends State<ChatPage> {
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Theme.of(context).primaryColor),
-                      borderRadius: BorderRadius.circular(
-                          10) // Set border color to primary color
+                      borderRadius: BorderRadius.circular(10) // Set border color to primary color
                       ),
                   height: 50,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Text('GPT-3 Turbo',
-                            style: TextStyle(
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(selectedModel,
+                            style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold)),
                       ),
                       IconButton(
@@ -46,18 +46,64 @@ class _ChatPageState extends State<ChatPage> {
                           // Add BottomSheet to show more models
                           showModalBottomSheet(
                             context: context,
-                            builder: (context) => Column(
-                              children: [
-                                const Text('Choose Model',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 10),
-                                Image.asset('assets/gpt_model/GPT3-poster.png'),
-                                Image.asset('assets/gpt_model/GPT4-poster.png'),
-                                Image.asset(
-                                    'assets/gpt_model/GPT4T-poster.png'),
-                              ],
+                            builder: (context) => SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text('Choose Model',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedModel = 'GPT-3 Turbo';
+                                      });
+                                      Navigator.pop(context);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset(selectedModel ==
+                                              'GPT-3 Turbo'
+                                          ? 'assets/gpt_model/GPT3-poster-selected.png'
+                                          : 'assets/gpt_model/GPT3-poster-unselected.png'),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedModel = 'GPT-4';
+                                      });
+                                      Navigator.pop(context);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset(selectedModel ==
+                                              'GPT-4'
+                                          ? 'assets/gpt_model/GPT4-poster-selected.png'
+                                          : 'assets/gpt_model/GPT4-poster-unselected.png'),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedModel = 'GPT-4T';
+                                      });
+                                      Navigator.pop(context);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(6.0),
+                                      child: Image.asset(selectedModel ==
+                                              'GPT-4T'
+                                          ? 'assets/gpt_model/GPT4T-poster-selected.png'
+                                          : 'assets/gpt_model/GPT4T-poster-unselected.png'),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
